@@ -22,6 +22,7 @@ module.exports = {
     "prefer-arrow-callback": "off",
     "no-var": "off",
     "no-undefined": "off",
+    "no-undef": "off"
     // "no-unused-expressions": "off"
   }
 };
