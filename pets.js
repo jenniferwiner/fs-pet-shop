@@ -37,7 +37,8 @@ else if (cmd === 'create') {
       process.exit(1);
     }
 
-    let petAddedObj = { age: age, kind: kind, name: name }
+    let petAddedObj = { age: age, kind: kind, name: name };
+
     pets.push(petAddedObj);
 
     let petsJSON = JSON.stringify(pets);
@@ -53,7 +54,7 @@ else if (cmd === 'update') {
     if (updateErr) throw updateErr;
 
     let pets = JSON.parse(data);
-    let petNumber = process.argv[3]
+    let petNumber = process.argv[3];
     let age = parseInt(process.argv[4]);
     let kind = process.argv[5];
     let name = process.argv[6];
@@ -63,7 +64,8 @@ else if (cmd === 'update') {
       process.exit(1);
     }
 
-    let petAddedObj = { age: age, kind: kind, name: name }
+    let petAddedObj = { age: age, kind: kind, name: name };
+
     pets[petNumber] = petAddedObj;
 
     let petsJSON = JSON.stringify(pets);
@@ -71,6 +73,29 @@ else if (cmd === 'update') {
     fs.writeFile(petsPath, petsJSON, function(writeErr) {
       if (writeErr) throw writeErr;
       console.log(petAddedObj);
+    });
+  });
+}
+else if (cmd === 'destroy') {
+  fs.readFile(petsPath, 'utf8', function(destroyErr, data) {
+    if (destroyErr) throw destroyErr;
+
+    let pets = JSON.parse(data);
+    let petNumber = process.argv[3];
+
+    if (!petNumber) {
+      console.error(`Usage: ${node} ${file} destroy INDEX`);
+      process.exit(1);
+    }
+
+    let petDestroy = pets[petNumber];
+    pets.splice(petNumber, 1);
+
+    let petsJSON = JSON.stringify(pets);
+
+    fs.writeFile(petsPath, petsJSON, function(writeErr) {
+      if (writeErr) throw writeErr;
+      console.log(petDestroy);
     });
   });
 }
