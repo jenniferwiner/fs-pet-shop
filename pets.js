@@ -1,5 +1,4 @@
 #!/usr/local/bin/node
-
 'use strict';
 
 const fs = require('fs');
@@ -91,6 +90,7 @@ else if (cmd === 'destroy') {
     }
 
     let petDestroy = pets[petNumber];
+
     pets.splice(petNumber, 1);
 
     let petsJSON = JSON.stringify(pets);
