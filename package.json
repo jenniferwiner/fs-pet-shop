@@ -25,7 +25,11 @@
   },
   "homepage": "https://github.com/gSchool/fs-pet-shop#readme",
   "dependencies": {
-    "nodemon": "^1.9.1"
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "nodemon": "^1.9.1",
+    "eslint": "^3.10.2",
+    "eslint-config-ryansobol": "^10.0.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
